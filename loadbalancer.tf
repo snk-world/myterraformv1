@@ -1,6 +1,19 @@
-data "yandex_lb_target_group" "events_api_tg" {
-  name = yandex_compute_instance_group.events_api_ig.load_balancer[0].target_group_name
+
+resource "yandex_lb_target_group" "foo" {
+  name      = "my-target-group"
+  region_id = "ru-central1"
+
+  target {
+    subnet_id = yandex_vpc_subnet.subnet-1.id
+    address   = yandex_compute_instance.vm-1.network_interface.0.ip_address
+  }
+
+  target {
+    subnet_id = yandex_vpc_subnet.subnet-2.id
+    address   = yandex_compute_instance.vm-2.network_interface.0.ip_address
+  }
 }
+
 
 resource "yandex_lb_network_load_balancer" "events_api_lb" {
   name = "events-api-lb"
@@ -15,7 +28,7 @@ resource "yandex_lb_network_load_balancer" "events_api_lb" {
   }
 
   attached_target_group {
-    target_group_id = data.yandex_lb_target_group.events_api_tg.id
+    target_group_id = data.yandex_lb_target_group.foo.id
 
     healthcheck {
       name = "http"
