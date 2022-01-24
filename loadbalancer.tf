@@ -1,5 +1,5 @@
 
-resource "yandex_lb_target_group" "foo" {
+resource "yandex_lb_target_group" "my-target-group" {
   name      = "my-target-group"
   region_id = "ru-central1"
 
@@ -15,7 +15,7 @@ resource "yandex_lb_target_group" "foo" {
 }
 
 
-resource "yandex_lb_network_load_balancer" "events_api_lb" {
+resource "yandex_lb_network_load_balancer" "foo" {
   name = "events-api-lb"
 
   listener {
@@ -28,7 +28,7 @@ resource "yandex_lb_network_load_balancer" "events_api_lb" {
   }
 
   attached_target_group {
-    target_group_id = data.yandex_lb_target_group.foo.id
+    target_group_id = "${yandex_lb_target_group.my-target-group.id}"
 
     healthcheck {
       name = "http"
@@ -38,5 +38,6 @@ resource "yandex_lb_network_load_balancer" "events_api_lb" {
       }
     }
   }
+  depends_on = [yandex_lb_target_group.my-target-group]
 }
 

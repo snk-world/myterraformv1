@@ -57,6 +57,7 @@ resource "yandex_vpc_subnet" "subnet-2" {
   v4_cidr_blocks = ["192.168.11.0/24"]
 }
 
+
 #============== output ===============
 
 
