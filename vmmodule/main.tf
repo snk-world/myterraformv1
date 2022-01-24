@@ -41,7 +41,7 @@ resource "yandex_compute_instance" "vm-1" {
   }
 
   metadata = {
-    ssh-keys = "aadmin2:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCjXpSuDI4fp3lU5rLum6oALD2L7MNkSyJ5HJbETIkvvgxanLPSGBKWVC+/G1E4A5ZDeBZfgonOD9jyIMSsMz6TOGKbnkZEA6hQVt/Uz1ofrXquVjwOyV4R+jWWQdjgIyryrK6Eus8UmkLUwWnPqtdFovzzcENWrJfkFAku3TozTfBELJjZyyKOfDe4M6SKIEWdy0aqVB/GKsuwjCm2WOo7gYkfR970wTzalNNSRvZ8sEjkMka4zeYH7tBoAoRVvL2XzagnJDQac/sBO8eHMgwKpByBd8U7vVBrEWlW/wN/af4G1ThrGQA7561lauJAndLTv6GfGSdHc2zcsD3EpgQqXF4Z7i9eln9VcvXu7n1GtX55k3aZaJhrHiKF53t7EVNGwbLjll+xmXTZpDT2Tt1aaDw1LuPIVAaNuqathFxQ4fwuA3XRgywM6bdgXdHzcqTSvFemyTmEw/vh2Jb5alAMA18H+5+al40T/C2CgP9m3jEMFJV5F1JTN1JC16Fiw80= aadmin2"
+    ssh-keys = "admin2:${file("~/.ssh/id_rsa.pub")}"
   }
   
   load_balancer {
