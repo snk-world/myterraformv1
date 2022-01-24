@@ -21,7 +21,7 @@ resource "yandex_lb_network_load_balancer" "foo" {
   listener {
     name = "events-api-listener"
     port = 80
-    target_port = 8080
+    target_port = 80
     external_address_spec {
       ip_version = "ipv4"
     }
@@ -33,8 +33,8 @@ resource "yandex_lb_network_load_balancer" "foo" {
     healthcheck {
       name = "http"
       http_options {
-        port = 8080
-        path = "/status"
+        port = 80
+        path = "/"
       }
     }
   }

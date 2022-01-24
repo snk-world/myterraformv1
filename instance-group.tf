@@ -1,9 +1,9 @@
 #============== vm images ===============
-data "yandex_compute_image" "my_image1" {
+data "yandex_compute_image" "my_image11" {
   family = "lemp"
 }
 
-data "yandex_compute_image" "my_image2" {
+data "yandex_compute_image" "my_image22" {
   family = "lamp"
 }
 
@@ -11,7 +11,7 @@ data "yandex_compute_image" "my_image2" {
 #============== vms ===============
 
 resource "yandex_compute_instance" "vm-1" {
-  name = "lemp1"
+  name = "lemp11"
 
   resources {
     cores  = 2
@@ -20,7 +20,7 @@ resource "yandex_compute_instance" "vm-1" {
 
   boot_disk {
     initialize_params {
-      image_id = data.yandex_compute_image.my_image1.id
+      image_id = data.yandex_compute_image.my_image11.id
     }
   }
 
@@ -36,7 +36,7 @@ resource "yandex_compute_instance" "vm-1" {
 }
 
 resource "yandex_compute_instance" "vm-2" {
-  name = "lemp1"
+  name = "lemp22"
 
   resources {
     cores  = 2
@@ -45,7 +45,7 @@ resource "yandex_compute_instance" "vm-2" {
 
   boot_disk {
     initialize_params {
-      image_id = data.yandex_compute_image.my_image2.id
+      image_id = data.yandex_compute_image.my_image22.id
     }
   }
 
