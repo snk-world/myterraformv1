@@ -30,7 +30,7 @@ resource "yandex_compute_instance" "vm-1" {
   }
 
   metadata = {
-    ssh-keys = "admin2:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "aadmin2:${file("~/.ssh/id_rsa.pub")}"
   }
   
 }

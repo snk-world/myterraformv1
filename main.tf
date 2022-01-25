@@ -12,6 +12,18 @@ terraform {
       version = "0.69.0"
     }
   }
+  
+  backend "s3" {
+    endpoint   = "storage.yandexcloud.net"
+    bucket     = "tf-state-bucket-mentor-nnnew"
+    region     = "ru-central1-a"
+    key        = "terrstate1/mystate1.tfstate"
+    access_key = "WfrA4riGoi9Q_MR3AR7t"
+    secret_key = "xq9aqGnniYSeo_1J4Dju5o0ZJMquupH01ejYvrcb"
+
+    skip_region_validation      = true
+    skip_credentials_validation = true
+  }
 
   required_version = ">= 1.0"
 }
